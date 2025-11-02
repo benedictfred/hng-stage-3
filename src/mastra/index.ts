@@ -8,7 +8,7 @@ import {
   intentMatchScorer,
   readabilityScorer,
 } from "./scorers/sql-scorer";
-import { VercelDeployer } from "@mastra/deployer-vercel";
+import { a2aAgentRoute } from "./routes/a2a-agent-route";
 
 export const mastra = new Mastra({
   workflows: { sqlWorkflow },
@@ -33,5 +33,11 @@ export const mastra = new Mastra({
   observability: {
     // Enables DefaultExporter and CloudExporter for AI tracing
     default: { enabled: true },
+  },
+  server: {
+    build: {
+      swaggerUI: true,
+    },
+    apiRoutes: [a2aAgentRoute],
   },
 });

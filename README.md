@@ -273,6 +273,8 @@ hng-stage-three/
 │       ├── agents/
 │       │   ├── sql-agent.ts         # SQL agent definition
 │       │
+│       ├── routes/
+│       │   ├── a2a-agent-route.ts   # A2A API route for the SQL agent
 │       ├── tools/
 │       │   ├── sql-tool.ts          # SQL tools (validator, explainer, etc.)
 │       │
