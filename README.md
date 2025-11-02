@@ -62,7 +62,7 @@ Built-in evaluation scorers ensure high-quality outputs:
 
 - Node.js >= 20.9.0
 - npm or yarn
-- OpenAI API key (for the LLM)
+- Grok API key (for the LLM)
 - Telex.im account access
 
 ## Installation
@@ -212,10 +212,34 @@ RETURNING id, username, email, created_at;
    - Deploy the Mastra agent to a public URL (e.g., using Vercel, Railway, or AWS)
    - Note your agent endpoint: `https://your-domain.com/a2a/agent/sqlAgent`
 
-3. **Create Workflow in Telex**
-   - Use the provided `telex-workflow.json` file
-   - Update the `url` field with your deployed agent URL
-   - Import the workflow into Telex.im
+3. **Create Workflow JSON**
+
+   ```json
+   {
+     "active": true,
+     "category": "productivity",
+     "description": "A project manager bot that tracks and summarizes tasks for Telex users.",
+     "id": "unique_id_generated",
+     "long_description": "You help users manage tasks and summarize chat history. Recognize project deadlines, remind users, and provide friendly nudges. Use clear, concise language and ask for missing details.",
+     "name": "project_helper_agent",
+     "nodes": [
+       {
+         "id": "task_agent_node",
+         "name": "Project helper bot",
+         "parameters": {},
+         "position": [100, 100],
+         "type": "a2a/mastra-a2a-node",
+         "typeVersion": 1,
+         "url": "https://your-domain.com/a2a/agent/sqlAgent"
+       }
+     ],
+     "pinData": {},
+     "settings": {
+       "executionOrder": "v1"
+     },
+     "short_description": "Task/project manager for Telex"
+   }
+   ```
 
 4. **Test the Integration**
    - Open Telex.im and navigate to your workflow
