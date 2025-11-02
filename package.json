@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "mastra dev",
-    "build": "mastra build",
+    "build": "npx mastra build",
     "start": "node --import=./.mastra/output/instrumentation.mjs .mastra/output/index.mjs"
   },
   "keywords": [
